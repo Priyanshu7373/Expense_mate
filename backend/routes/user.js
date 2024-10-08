@@ -1,0 +1,15 @@
+const express = require('express');
+const mongoose = require('mongoose');   
+const router = express.Router();
+const {login, register,showGrp,joinGrp,createGrp,showHistory,logout,addTransaction,settle} = require('../controllers/user');
+const auth = require('../middleware/auth');
+router.post('/register', register);
+router.post('/login', login);
+router.get('/showGrp',auth,showGrp);
+router.post('/joinGrp',auth,joinGrp);
+router.post('/createGrp',auth,createGrp);
+router.get('/showHistory',auth,showHistory);
+router.get('/logout',auth,logout);
+router.post('/addTransaction',auth,addTransaction);
+router.post('/settle',auth,settle);
+module.exports = router;
